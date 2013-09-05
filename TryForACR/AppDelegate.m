@@ -7,14 +7,27 @@
 //
 
 #import "AppDelegate.h"
+#import "TopMenuController.h"
 
 @implementation AppDelegate
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    //-------------------------------------------------------------------------------------
+    //创建基准的Controller对象
+    TopMenuController* topMenu = [ [ TopMenuController alloc ]
+                                    init ];
+    rootController = [ [ UINavigationController alloc ]
+                      initWithRootViewController: topMenu ];
+    // 将母体Controller的view 追加到Window中
+    [ self.window addSubview: rootController.view ];
+    //-------------------------------------------------------------------------------------
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
